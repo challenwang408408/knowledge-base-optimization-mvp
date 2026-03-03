@@ -1,0 +1,434 @@
+/* Avatar.fit 设计令牌 — 注入 Streamlit 全局样式 */
+
+/* ===== 字体栈 ===== */
+html, body, [class*="st-"] {
+    font-family: -apple-system, "PingFang SC", "Segoe UI", "Hiragino Sans GB",
+                 "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #515466;
+}
+
+/* ===== 页面背景 ===== */
+.stApp {
+    background-color: #FFFFFF;
+}
+
+section[data-testid="stSidebar"] {
+    background-color: #F2F4F7;
+    border-right: 1px solid #EBECF2;
+}
+
+/* ===== 侧边栏文字 ===== */
+section[data-testid="stSidebar"] * {
+    color: #515466;
+}
+
+section[data-testid="stSidebar"] .stMarkdown p {
+    font-size: 14px;
+}
+
+/* ===== 主按钮 ===== */
+.stButton > button[kind="primary"],
+.stButton > button[data-testid="stBaseButton-primary"] {
+    background-color: #413EFF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    height: 36px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 200ms ease;
+}
+
+.stButton > button[kind="primary"]:hover,
+.stButton > button[data-testid="stBaseButton-primary"]:hover {
+    background-color: #3532D9;
+    box-shadow: 0 2px 8px rgba(65, 62, 255, 0.2);
+}
+
+.stButton > button[kind="primary"]:disabled,
+.stButton > button[data-testid="stBaseButton-primary"]:disabled {
+    background-color: #C4C3F5;
+    color: #FFFFFF;
+    cursor: not-allowed;
+}
+
+/* ===== 次按钮 ===== */
+.stButton > button[kind="secondary"],
+.stButton > button[data-testid="stBaseButton-secondary"] {
+    background-color: #FFFFFF;
+    color: #515466;
+    border: 1px solid #EBECF2;
+    border-radius: 8px;
+    height: 36px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 200ms ease;
+}
+
+.stButton > button[kind="secondary"]:hover,
+.stButton > button[data-testid="stBaseButton-secondary"]:hover {
+    border-color: #D0D2DA;
+    background-color: #FAFAFA;
+}
+
+/* ===== 下载按钮 ===== */
+.stDownloadButton > button {
+    background-color: #413EFF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    height: 36px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 200ms ease;
+}
+
+.stDownloadButton > button:hover {
+    background-color: #3532D9;
+    box-shadow: 0 2px 8px rgba(65, 62, 255, 0.2);
+}
+
+/* ===== 输入控件 ===== */
+.stTextInput > div > div > input,
+.stSelectbox > div > div,
+.stNumberInput > div > div > input,
+.stTextArea > div > div > textarea {
+    border: 1px solid #EBECF2;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #515466;
+    background-color: #FFFFFF;
+    transition: border-color 200ms ease;
+}
+
+.stTextInput > div > div > input:focus,
+.stNumberInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus {
+    border-color: #413EFF;
+    box-shadow: 0 0 0 2px rgba(65, 62, 255, 0.1);
+}
+
+::placeholder {
+    color: #98A2B2;
+}
+
+/* ===== 文件上传区 ===== */
+[data-testid="stFileUploader"] {
+    border: 1px dashed #EBECF2;
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 200ms ease;
+}
+
+[data-testid="stFileUploader"]:hover {
+    border-color: #413EFF;
+}
+
+/* ===== 标题层级 ===== */
+h1 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    color: #515466;
+}
+
+h2 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    color: #515466;
+}
+
+h3 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #515466;
+}
+
+/* ===== 二级/说明文字 ===== */
+.secondary-text {
+    color: #676F83;
+    font-size: 14px;
+}
+
+.hint-text {
+    color: #98A2B2;
+    font-size: 13px;
+}
+
+/* ===== 分割线 ===== */
+hr {
+    border: none;
+    border-top: 1px solid #EBECF2;
+    margin: 16px 0;
+}
+
+/* ===== 表格 ===== */
+.stDataFrame thead th {
+    font-size: 14px;
+    color: #64748B;
+    font-weight: 500;
+    background-color: #F8F9FB;
+}
+
+.stDataFrame tbody td {
+    font-size: 14px;
+    color: #515466;
+    padding: 10px 12px;
+}
+
+.stDataFrame tbody tr:hover {
+    background-color: #F8F9FB;
+}
+
+/* ===== Tabs ===== */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 32px;
+    font-size: 14px;
+    color: #676F83;
+    border-radius: 6px 6px 0 0;
+    font-weight: 400;
+    padding: 0 16px;
+}
+
+.stTabs [aria-selected="true"] {
+    color: #413EFF;
+    font-weight: 500;
+}
+
+/* ===== 通知/提示 ===== */
+.stAlert {
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+div[data-testid="stNotification"] {
+    border-radius: 8px;
+}
+
+/* ===== 进度条 ===== */
+.stProgress > div > div > div {
+    background-color: #413EFF;
+}
+
+/* ===== Spinner ===== */
+.stSpinner > div {
+    border-top-color: #413EFF;
+}
+
+/* ===== 卡片组件（通过 st.markdown + HTML 实现） ===== */
+.avatar-card {
+    background: #FFFFFF;
+    border: 1px solid #EBECF2;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 200ms ease;
+    cursor: pointer;
+}
+
+.avatar-card:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border-color: #D0D2DA;
+}
+
+.avatar-card.selected {
+    border-color: #413EFF;
+    box-shadow: 0 0 0 2px rgba(65, 62, 255, 0.1);
+}
+
+.avatar-card .card-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #515466;
+    margin-bottom: 8px;
+}
+
+.avatar-card .card-desc {
+    font-size: 14px;
+    color: #676F83;
+    line-height: 21px;
+}
+
+.avatar-card .card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+/* ===== 摘要统计卡片 ===== */
+.summary-card {
+    background: #F2F4F7;
+    border-radius: 8px;
+    padding: 16px 20px;
+}
+
+.summary-card .stat-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: #515466;
+}
+
+.summary-card .stat-label {
+    font-size: 13px;
+    color: #676F83;
+    margin-top: 4px;
+}
+
+/* ===== 差异对比行 ===== */
+.diff-row {
+    border: 1px solid #EBECF2;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 8px;
+    background: #FFFFFF;
+}
+
+.diff-row .original-q {
+    font-size: 14px;
+    font-weight: 500;
+    color: #515466;
+    margin-bottom: 8px;
+}
+
+.diff-row .expanded-q {
+    font-size: 14px;
+    color: #676F83;
+    padding: 4px 0 4px 12px;
+    border-left: 2px solid #413EFF;
+    margin: 4px 0;
+}
+
+/* ===== 空状态 ===== */
+.empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: #98A2B2;
+}
+
+.empty-state .empty-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #676F83;
+    margin-bottom: 8px;
+}
+
+.empty-state .empty-desc {
+    font-size: 14px;
+    color: #98A2B2;
+    margin-bottom: 20px;
+}
+
+/* ===== 成功/失败状态色 ===== */
+.status-success {
+    color: #008858;
+}
+
+.status-error {
+    color: #68070A;
+}
+
+/* ===== 胶囊标签 ===== */
+.capsule-tag {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 12px;
+    border-radius: 9999px;
+    font-size: 13px;
+    background: #F2F4F7;
+    color: #515466;
+    border: 1px solid #EBECF2;
+    margin: 0 6px 6px 0;
+}
+
+/* ===== 关键词标签容器 ===== */
+.keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 0;
+}
+
+.keyword-tag {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 9999px;
+    font-size: 13px;
+    background: #EEF0FF;
+    color: #413EFF;
+    border: 1px solid #C4C3F5;
+    font-weight: 500;
+}
+
+/* ===== 已选参数反馈 ===== */
+.param-feedback {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: #F2F4F7;
+    color: #515466;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.param-feedback .feedback-label {
+    color: #98A2B2;
+    font-weight: 400;
+}
+
+.param-feedback .feedback-value {
+    color: #413EFF;
+    font-weight: 500;
+}
+
+/* ===== HTML 预览表格（替代 st.dataframe 以规避 Arrow 乱码）===== */
+.preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #515466;
+}
+
+.preview-table thead th {
+    font-size: 14px;
+    color: #64748B;
+    font-weight: 500;
+    background-color: #F8F9FB;
+    padding: 10px 12px;
+    border-bottom: 1px solid #EBECF2;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.preview-table tbody td {
+    font-size: 14px;
+    color: #515466;
+    padding: 10px 12px;
+    border-bottom: 1px solid #EBECF2;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.preview-table tbody tr:hover {
+    background-color: #F8F9FB;
+}
+
+/* ===== 隐藏 Streamlit 默认品牌标识 ===== */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
