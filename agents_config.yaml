@@ -1,0 +1,19 @@
+# 子代理配置清单
+# 启动时由 agent_loader 读取，控制哪些子代理被注册到系统中。
+# enabled: false 的子代理不会被加载。
+
+agents:
+  - id: multi_q_expander
+    module: sub_agents.multi_q_expander
+    class_name: MultiQExpander
+    enabled: true
+    icon: "🔄"
+    order: 1
+
+  # --- 以下为预留占位，enabled: false ---
+  # - id: knowledge_qa_checker
+  #   module: sub_agents.qa_checker
+  #   class_name: QAChecker
+  #   enabled: false
+  #   icon: "🔍"
+  #   order: 2

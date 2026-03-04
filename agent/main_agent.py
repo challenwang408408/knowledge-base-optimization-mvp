@@ -7,7 +7,7 @@ from typing import Any
 import pandas as pd
 
 from agent.registry import registry
-from sub_agents.base import SubAgentResult, ValidationResult
+from sub_agents.base import SubAgentResult, UnifiedResult, ValidationResult
 
 logger = logging.getLogger(__name__)
 
@@ -17,9 +17,14 @@ class AgentResponse:
     """大 Agent 统一返回结构。"""
     success: bool
     stage: str
+    # --- V1 字段（保留）---
     result: SubAgentResult | None = None
     error: str | None = None
     validation_errors: list[str] | None = None
+    # --- V2 字段（新增，从 SubAgentResult.unified_result 透传）---
+    unified_result: UnifiedResult | None = None
+    # --- 任务追踪（由 service 层填充）---
+    task_id: str | None = None
 
 
 class MainAgent:
@@ -80,6 +85,7 @@ class MainAgent:
             success=True,
             stage="完成",
             result=result,
+            unified_result=result.unified_result,
         )
 
 

@@ -7,6 +7,10 @@ from typing import Any
 import pandas as pd
 
 
+# ============================================================
+# V1 兼容层（保留，现有 UI 直接读取这些字段）
+# ============================================================
+
 @dataclass
 class ValidationResult:
     ok: bool
@@ -19,13 +23,53 @@ class DiffItem:
     expanded_qs: list[str] = field(default_factory=list)
 
 
+# ============================================================
+# V2 统一结果协议（新增，支持异构产物）
+# ============================================================
+
+@dataclass
+class Artifact:
+    """单个产物，可承载表格、文件、文本报告、差异、JSON 等。"""
+    artifact_type: str  # table | file | text_report | diff | json
+    name: str
+    mime_type: str = ""
+    data: Any = None
+    download_path: str = ""
+
+
+@dataclass
+class Metrics:
+    """执行度量。"""
+    duration_ms: int = 0
+    input_count: int = 0
+    output_count: int = 0
+
+
+@dataclass
+class UnifiedResult:
+    """V2 统一外层回执协议，可承载任意子代理的异构结果。"""
+    status: str  # success | failed
+    summary: str | dict = ""
+    artifacts: list[Artifact] = field(default_factory=list)
+    metrics: Metrics | None = None
+    warnings: list[str] = field(default_factory=list)
+    errors: list[str] = field(default_factory=list)
+
+
+# ============================================================
+# SubAgentResult：同时承载 V1 + V2
+# ============================================================
+
 @dataclass
 class SubAgentResult:
     success: bool
+    # --- V1 字段（保留，现有 UI 直接读取）---
     output_df: pd.DataFrame | None = None
     summary: dict[str, Any] = field(default_factory=dict)
     diff_items: list[DiffItem] = field(default_factory=list)
     error: str | None = None
+    # --- V2 字段（新增，并行输出）---
+    unified_result: UnifiedResult | None = None
 
 
 class SubAgentBase(ABC):

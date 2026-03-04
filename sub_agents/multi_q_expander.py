@@ -12,6 +12,9 @@ from sub_agents.base import (
     SubAgentResult,
     ValidationResult,
     DiffItem,
+    UnifiedResult,
+    Artifact,
+    Metrics,
 )
 from utils.excel_handler import get_column_case_insensitive, validate_columns
 from utils.llm_client import LLMClient
@@ -117,7 +120,7 @@ class MultiQExpander(SubAgentBase):
             "keywords": {
                 "type": "str",
                 "label": "领域关键词",
-                "description": "可选，用逗号分隔多个关键词",
+                "description": "可选，用英文分号 ; 分隔多个关键词（注意不要用中文分号 ；）",
                 "default": "",
             },
         }
@@ -214,6 +217,7 @@ class MultiQExpander(SubAgentBase):
                 error_details.append(f"行 {idx + 2}: {e}")
 
         elapsed = round(time.time() - start_time, 2)
+        elapsed_ms = int(elapsed * 1000)
 
         output_df = df.copy()
         output_df["扩展问题"] = all_expanded
@@ -230,9 +234,37 @@ class MultiQExpander(SubAgentBase):
         if error_details:
             summary["error_details"] = error_details
 
+        unified = UnifiedResult(
+            status="success",
+            summary=summary,
+            artifacts=[
+                Artifact(
+                    artifact_type="table",
+                    name="优化结果表",
+                    mime_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    data=output_df,
+                ),
+                Artifact(
+                    artifact_type="diff",
+                    name="差异对比",
+                    data=[
+                        {"original_q": d.original_q, "expanded_qs": d.expanded_qs}
+                        for d in diff_items
+                    ],
+                ),
+            ],
+            metrics=Metrics(
+                duration_ms=elapsed_ms,
+                input_count=total,
+                output_count=success_count,
+            ),
+            warnings=error_details if error_details else [],
+        )
+
         return SubAgentResult(
             success=True,
             output_df=output_df,
             summary=summary,
             diff_items=diff_items,
+            unified_result=unified,
         )

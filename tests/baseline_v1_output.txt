@@ -1,0 +1,57 @@
+[1] Excel 工具测试
+  ✓ 测试文件数量 >= 20
+  ✓ 读取 extra_columns.xlsx
+  ✓ 读取 long_text_01.xlsx
+  ✓ 读取 long_text_02.xlsx
+  ✓ 读取 lowercase_cols.xlsx
+  ✓ 读取 minimal_columns.xlsx
+  ✓ 读取 normal_01.xlsx
+  ✓ 读取 normal_02.xlsx
+  ✓ 读取 normal_03.xlsx
+  ✓ 读取 normal_04.xlsx
+  ✓ 读取 normal_05.xlsx
+  ✓ 读取 normal_06.xlsx
+  ✓ 读取 normal_07.xlsx
+  ✓ 读取 normal_08.xlsx
+  ✓ 读取 normal_09.xlsx
+  ✓ 读取 normal_10.xlsx
+  ✓ 读取 special_chars_01.xlsx
+  ✓ 读取 special_chars_02.xlsx
+  ✓ 读取 special_chars_03.xlsx
+  ✓ 读取 with_empty_01.xlsx
+  ✓ 读取 with_empty_02.xlsx
+  ✓ validate_columns — 正常列
+  ✓ validate_columns — 缺失列
+  ✓ get_column_case_insensitive
+  ✓ df_to_excel_bytes
+  ✓ Excel 往返一致
+
+[2] 子代理协议测试
+  ✓ id 非空
+  ✓ name 非空
+  ✓ description 非空
+  ✓ input_schema 有 required_columns
+  ✓ params_schema 非空
+  ✓ output_schema 非空
+  ✓ 是 SubAgentBase 子类
+
+[3] 后置校验测试
+  ✓ 正常文件校验通过
+  ✓ 缺少 Q/A 列校验失败
+  ✓ 返回错误信息
+  ✓ 空数据校验失败
+  ✓ 小写列名校验通过
+
+[4] 注册中心测试
+  ✓ 注册成功
+  ✓ list_all
+  ✓ 获取不存在的代理
+  ✓ 重复注册报错
+
+[5] 大 Agent 路由测试
+  ✓ 路由失败返回错误
+  ✓ 校验失败返回错误
+
+========================================
+结果：44 通过，0 失败
+========================================

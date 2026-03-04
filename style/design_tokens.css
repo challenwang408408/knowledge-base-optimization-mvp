@@ -1,191 +1,242 @@
-/* Avatar.fit 设计令牌 — 注入 Streamlit 全局样式 */
+/* 知识库优化 Agent 2.0 — Claude AI 风格设计令牌 */
+
+/* ===== Google Fonts 衬线体导入 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap');
+
+/* ===== CSS 变量 ===== */
+:root {
+    --bg-page: #F5F5F0;
+    --bg-card: #FFFFFF;
+    --bg-sidebar: #EEEEE8;
+    --bg-hover: #F0EFEA;
+    --bg-input: #FFFFFF;
+    --bg-badge: #F0EDE8;
+
+    --color-primary: #ae5630;
+    --color-primary-hover: #9a4a29;
+    --color-primary-light: rgba(174, 86, 48, 0.08);
+    --color-primary-disabled: #d4a88f;
+
+    --color-text: #1a1a18;
+    --color-text-secondary: #666660;
+    --color-text-muted: #999990;
+    --color-text-inverse: #FFFFFF;
+
+    --border-color: #E8E5E0;
+    --border-color-hover: #D5D0C8;
+    --border-color-focus: var(--color-primary);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-pill: 9999px;
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+
+    --font-serif: 'Source Serif 4', 'Noto Serif SC', Georgia, serif;
+    --font-sans: -apple-system, 'PingFang SC', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+    --transition: 200ms ease;
+}
 
 /* ===== 字体栈 ===== */
 html, body, [class*="st-"] {
-    font-family: -apple-system, "PingFang SC", "Segoe UI", "Hiragino Sans GB",
-                 "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 14px;
-    line-height: 21px;
-    color: #515466;
+    line-height: 1.5;
+    color: var(--color-text);
 }
 
 /* ===== 页面背景 ===== */
 .stApp {
-    background-color: #FFFFFF;
+    background-color: var(--bg-page);
 }
 
 section[data-testid="stSidebar"] {
-    background-color: #F2F4F7;
-    border-right: 1px solid #EBECF2;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
 }
 
-/* ===== 侧边栏文字 ===== */
 section[data-testid="stSidebar"] * {
-    color: #515466;
+    color: var(--color-text);
 }
 
 section[data-testid="stSidebar"] .stMarkdown p {
     font-size: 14px;
 }
 
+/* ===== 标题层级（衬线体）===== */
+h1 {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+h3 {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
 /* ===== 主按钮 ===== */
 .stButton > button[kind="primary"],
 .stButton > button[data-testid="stBaseButton-primary"] {
-    background-color: #413EFF;
-    color: #FFFFFF;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
     border: none;
-    border-radius: 8px;
-    height: 36px;
-    padding: 0 20px;
+    border-radius: var(--radius-md);
+    height: 40px;
+    padding: 0 24px;
     font-size: 14px;
     font-weight: 500;
-    transition: all 200ms ease;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
 }
 
 .stButton > button[kind="primary"]:hover,
 .stButton > button[data-testid="stBaseButton-primary"]:hover {
-    background-color: #3532D9;
-    box-shadow: 0 2px 8px rgba(65, 62, 255, 0.2);
+    background-color: var(--color-primary-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
 }
 
 .stButton > button[kind="primary"]:disabled,
 .stButton > button[data-testid="stBaseButton-primary"]:disabled {
-    background-color: #C4C3F5;
-    color: #FFFFFF;
+    background-color: var(--color-primary-disabled);
+    color: var(--color-text-inverse);
     cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }
 
 /* ===== 次按钮 ===== */
 .stButton > button[kind="secondary"],
 .stButton > button[data-testid="stBaseButton-secondary"] {
-    background-color: #FFFFFF;
-    color: #515466;
-    border: 1px solid #EBECF2;
-    border-radius: 8px;
-    height: 36px;
-    padding: 0 20px;
+    background-color: var(--bg-card);
+    color: var(--color-text);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    height: 40px;
+    padding: 0 24px;
     font-size: 14px;
     font-weight: 400;
-    transition: all 200ms ease;
+    transition: all var(--transition);
 }
 
 .stButton > button[kind="secondary"]:hover,
 .stButton > button[data-testid="stBaseButton-secondary"]:hover {
-    border-color: #D0D2DA;
-    background-color: #FAFAFA;
+    border-color: var(--border-color-hover);
+    background-color: var(--bg-hover);
 }
 
 /* ===== 下载按钮 ===== */
 .stDownloadButton > button {
-    background-color: #413EFF;
-    color: #FFFFFF;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
     border: none;
-    border-radius: 8px;
-    height: 36px;
-    padding: 0 20px;
+    border-radius: var(--radius-md);
+    height: 40px;
+    padding: 0 24px;
     font-size: 14px;
     font-weight: 500;
-    transition: all 200ms ease;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
 }
 
 .stDownloadButton > button:hover {
-    background-color: #3532D9;
-    box-shadow: 0 2px 8px rgba(65, 62, 255, 0.2);
+    background-color: var(--color-primary-hover);
+    box-shadow: var(--shadow-md);
 }
 
 /* ===== 输入控件 ===== */
 .stTextInput > div > div > input,
-.stSelectbox > div > div,
 .stNumberInput > div > div > input,
 .stTextArea > div > div > textarea {
-    border: 1px solid #EBECF2;
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
     padding: 8px 12px;
     font-size: 14px;
-    color: #515466;
-    background-color: #FFFFFF;
-    transition: border-color 200ms ease;
+    color: var(--color-text);
+    background-color: var(--bg-input);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.stSelectbox [data-baseweb="select"] {
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--color-text);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.stSelectbox [data-baseweb="select"] > div {
+    background-color: var(--bg-input);
+    border-color: var(--border-color);
 }
 
 .stTextInput > div > div > input:focus,
 .stNumberInput > div > div > input:focus,
 .stTextArea > div > div > textarea:focus {
-    border-color: #413EFF;
-    box-shadow: 0 0 0 2px rgba(65, 62, 255, 0.1);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
 }
 
 ::placeholder {
-    color: #98A2B2;
+    color: var(--color-text-muted);
 }
 
 /* ===== 文件上传区 ===== */
 [data-testid="stFileUploader"] {
-    border: 1px dashed #EBECF2;
-    border-radius: 8px;
-    padding: 20px;
-    transition: border-color 200ms ease;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    transition: border-color var(--transition), background-color var(--transition);
+    background-color: var(--bg-card);
 }
 
 [data-testid="stFileUploader"]:hover {
-    border-color: #413EFF;
-}
-
-/* ===== 标题层级 ===== */
-h1 {
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 600;
-    color: #515466;
-}
-
-h2 {
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 600;
-    color: #515466;
-}
-
-h3 {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 500;
-    color: #515466;
-}
-
-/* ===== 二级/说明文字 ===== */
-.secondary-text {
-    color: #676F83;
-    font-size: 14px;
-}
-
-.hint-text {
-    color: #98A2B2;
-    font-size: 13px;
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-light);
 }
 
 /* ===== 分割线 ===== */
 hr {
     border: none;
-    border-top: 1px solid #EBECF2;
+    border-top: 1px solid var(--border-color);
     margin: 16px 0;
 }
 
 /* ===== 表格 ===== */
 .stDataFrame thead th {
     font-size: 14px;
-    color: #64748B;
+    color: var(--color-text-secondary);
     font-weight: 500;
-    background-color: #F8F9FB;
+    background-color: var(--bg-hover);
 }
 
 .stDataFrame tbody td {
     font-size: 14px;
-    color: #515466;
+    color: var(--color-text);
     padding: 10px 12px;
 }
 
 .stDataFrame tbody tr:hover {
-    background-color: #F8F9FB;
+    background-color: var(--bg-hover);
 }
 
 /* ===== Tabs ===== */
@@ -194,147 +245,200 @@ hr {
 }
 
 .stTabs [data-baseweb="tab"] {
-    height: 32px;
+    height: 36px;
     font-size: 14px;
-    color: #676F83;
-    border-radius: 6px 6px 0 0;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     font-weight: 400;
     padding: 0 16px;
 }
 
 .stTabs [aria-selected="true"] {
-    color: #413EFF;
+    color: var(--color-primary);
     font-weight: 500;
 }
 
 /* ===== 通知/提示 ===== */
 .stAlert {
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     font-size: 14px;
 }
 
 div[data-testid="stNotification"] {
-    border-radius: 8px;
+    border-radius: var(--radius-md);
 }
 
 /* ===== 进度条 ===== */
 .stProgress > div > div > div {
-    background-color: #413EFF;
+    background-color: var(--color-primary);
 }
 
 /* ===== Spinner ===== */
 .stSpinner > div {
-    border-top-color: #413EFF;
+    border-top-color: var(--color-primary);
 }
 
-/* ===== 卡片组件（通过 st.markdown + HTML 实现） ===== */
+/* ===== 面板容器 ===== */
+.panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    height: 100%;
+}
+
+.panel-title {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* ===== 优化器卡片 ===== */
 .avatar-card {
-    background: #FFFFFF;
-    border: 1px solid #EBECF2;
-    border-radius: 8px;
-    padding: 20px;
-    transition: all 200ms ease;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    transition: all var(--transition);
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .avatar-card:hover {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-    border-color: #D0D2DA;
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-color-hover);
 }
 
 .avatar-card.selected {
-    border-color: #413EFF;
-    box-shadow: 0 0 0 2px rgba(65, 62, 255, 0.1);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
+    background: linear-gradient(135deg, var(--bg-card), rgba(174,86,48,0.02));
 }
 
 .avatar-card .card-title {
-    font-size: 16px;
-    font-weight: 500;
-    color: #515466;
-    margin-bottom: 8px;
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 6px;
 }
 
 .avatar-card .card-desc {
-    font-size: 14px;
-    color: #676F83;
-    line-height: 21px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
 }
 
 .avatar-card .card-icon {
-    font-size: 28px;
-    margin-bottom: 12px;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+/* ===== 占位卡片（即将上线）===== */
+.avatar-card.placeholder {
+    opacity: 0.6;
+    cursor: default;
+    background: var(--bg-hover);
+}
+
+.avatar-card.placeholder:hover {
+    box-shadow: none;
+    border-color: var(--border-color);
+}
+
+.coming-soon-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    background: var(--bg-badge);
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    margin-top: 8px;
 }
 
 /* ===== 摘要统计卡片 ===== */
 .summary-card {
-    background: #F2F4F7;
-    border-radius: 8px;
+    background: var(--bg-hover);
+    border-radius: var(--radius-md);
     padding: 16px 20px;
 }
 
 .summary-card .stat-value {
+    font-family: var(--font-serif);
     font-size: 24px;
-    font-weight: 600;
-    color: #515466;
+    font-weight: 700;
+    color: var(--color-text);
 }
 
 .summary-card .stat-label {
     font-size: 13px;
-    color: #676F83;
+    color: var(--color-text-secondary);
     margin-top: 4px;
 }
 
 /* ===== 差异对比行 ===== */
 .diff-row {
-    border: 1px solid #EBECF2;
-    border-radius: 8px;
-    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
     margin-bottom: 8px;
-    background: #FFFFFF;
+    background: var(--bg-card);
+    transition: box-shadow var(--transition);
+}
+
+.diff-row:hover {
+    box-shadow: var(--shadow-sm);
 }
 
 .diff-row .original-q {
     font-size: 14px;
     font-weight: 500;
-    color: #515466;
+    color: var(--color-text);
     margin-bottom: 8px;
 }
 
 .diff-row .expanded-q {
-    font-size: 14px;
-    color: #676F83;
+    font-size: 13px;
+    color: var(--color-text-secondary);
     padding: 4px 0 4px 12px;
-    border-left: 2px solid #413EFF;
+    border-left: 2px solid var(--color-primary);
     margin: 4px 0;
 }
 
 /* ===== 空状态 ===== */
 .empty-state {
     text-align: center;
-    padding: 48px 20px;
-    color: #98A2B2;
+    padding: 40px 20px;
+    color: var(--color-text-muted);
 }
 
 .empty-state .empty-title {
+    font-family: var(--font-serif);
     font-size: 16px;
-    font-weight: 500;
-    color: #676F83;
+    font-weight: 600;
+    color: var(--color-text-secondary);
     margin-bottom: 8px;
 }
 
 .empty-state .empty-desc {
     font-size: 14px;
-    color: #98A2B2;
+    color: var(--color-text-muted);
     margin-bottom: 20px;
 }
 
 /* ===== 成功/失败状态色 ===== */
 .status-success {
-    color: #008858;
+    color: #2d7a4f;
 }
 
 .status-error {
-    color: #68070A;
+    color: #c23934;
 }
 
 /* ===== 胶囊标签 ===== */
@@ -343,11 +447,11 @@ div[data-testid="stNotification"] {
     height: 28px;
     line-height: 28px;
     padding: 0 12px;
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
     font-size: 13px;
-    background: #F2F4F7;
-    color: #515466;
-    border: 1px solid #EBECF2;
+    background: var(--bg-badge);
+    color: var(--color-text);
+    border: 1px solid var(--border-color);
     margin: 0 6px 6px 0;
 }
 
@@ -364,11 +468,11 @@ div[data-testid="stNotification"] {
     align-items: center;
     height: 28px;
     padding: 0 12px;
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
     font-size: 13px;
-    background: #EEF0FF;
-    color: #413EFF;
-    border: 1px solid #C4C3F5;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    border: 1px solid rgba(174, 86, 48, 0.2);
     font-weight: 500;
 }
 
@@ -378,57 +482,214 @@ div[data-testid="stNotification"] {
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
-    border-radius: 6px;
-    background: #F2F4F7;
-    color: #515466;
+    border-radius: var(--radius-sm);
+    background: var(--bg-hover);
+    color: var(--color-text);
     font-size: 13px;
     margin-top: 4px;
 }
 
 .param-feedback .feedback-label {
-    color: #98A2B2;
+    color: var(--color-text-muted);
     font-weight: 400;
 }
 
 .param-feedback .feedback-value {
-    color: #413EFF;
+    color: var(--color-primary);
     font-weight: 500;
 }
 
-/* ===== HTML 预览表格（替代 st.dataframe 以规避 Arrow 乱码）===== */
+/* ===== HTML 预览表格 ===== */
 .preview-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
-    color: #515466;
+    color: var(--color-text);
 }
 
 .preview-table thead th {
-    font-size: 14px;
-    color: #64748B;
+    font-size: 13px;
+    color: var(--color-text-secondary);
     font-weight: 500;
-    background-color: #F8F9FB;
+    background-color: var(--bg-hover);
     padding: 10px 12px;
-    border-bottom: 1px solid #EBECF2;
+    border-bottom: 1px solid var(--border-color);
     text-align: left;
     white-space: nowrap;
 }
 
 .preview-table tbody td {
-    font-size: 14px;
-    color: #515466;
-    padding: 10px 12px;
-    border-bottom: 1px solid #EBECF2;
-    max-width: 400px;
+    font-size: 13px;
+    color: var(--color-text);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-color);
+    max-width: 180px;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .preview-table tbody tr:hover {
-    background-color: #F8F9FB;
+    background-color: var(--bg-hover);
+}
+
+/* ===== 文件列表 ===== */
+.file-list-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    margin-bottom: 6px;
+    background: var(--bg-card);
+    font-size: 13px;
+    color: var(--color-text);
+}
+
+.file-list-item .file-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.file-list-item .file-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-list-item .file-size {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+/* ===== 输出区占位 ===== */
+.output-placeholder {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-text-muted);
+}
+
+.output-placeholder .placeholder-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.output-placeholder .placeholder-text {
+    font-size: 14px;
+}
+
+/* ===== Metric 样式覆盖 ===== */
+[data-testid="stMetric"] {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+}
+
+[data-testid="stMetricValue"] {
+    font-family: var(--font-serif);
+    color: var(--color-text);
 }
 
 /* ===== 隐藏 Streamlit 默认品牌标识 ===== */
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
+
+/* ===== 三栏布局微调 ===== */
+.block-container {
+    padding-top: 2rem;
+    max-width: 100%;
+}
+
+/* ===== 固定高度滚动面板（模块化高度控制）===== */
+.scroll-panel {
+    overflow: auto;
+    border-radius: var(--radius-sm);
+}
+
+.scroll-panel--preview {
+    max-height: 220px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    padding: 2px;
+}
+
+.scroll-panel--diff {
+    max-height: 320px;
+    padding: 4px 0;
+}
+
+.scroll-panel--result {
+    max-height: 400px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    padding: 2px;
+}
+
+.scroll-panel::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.scroll-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scroll-panel::-webkit-scrollbar-thumb {
+    background: var(--border-color-hover);
+    border-radius: 3px;
+}
+
+.scroll-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+}
+
+/* ===== 选中优化器卡片（下拉列表配套）===== */
+.selected-agent-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--bg-card), rgba(174,86,48,0.03));
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+    margin: 8px 0 4px 0;
+}
+
+.selected-agent-card.placeholder {
+    border: 1px solid var(--border-color);
+    background: var(--bg-hover);
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+.selected-agent-card .sac-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.selected-agent-card .sac-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.selected-agent-card .sac-title {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.selected-agent-card .sac-desc {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
